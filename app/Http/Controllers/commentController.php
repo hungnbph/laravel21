@@ -1,12 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Comment;
-use Illuminate\Http\Request;
-use DB;
 
-class commentController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Uer;
+use App\Models\Comment;
+
+class CommentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('loginActive'); 
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +23,8 @@ class commentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
-        $comments = Comment::paginate();
-        return view('comments.listComment',['comments'=> $comments]);
-
+        $comments = Comment::with(['product:id,name', 'user:id,name'])->paginate(5);
+        return view('comments.index',['comments'=>$comments]);
     }
 
     /**
@@ -47,13 +54,9 @@ class commentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
-        $comment = Comment::find($comment);
-        $commentQuery = DB::table('comments')->find($comment);
-        $commentObj=$comment;
-        return view('comments.showComment' , ['comment'=>$comment]);
-
+        //
     }
 
     /**
@@ -62,9 +65,9 @@ class commentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit',['comment'=> $comment]);
     }
 
     /**
@@ -74,9 +77,11 @@ class commentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->update($request->all());
+        $comment->save();
+        return redirect()->route('comments.index');
     }
 
     /**
@@ -87,12 +92,9 @@ class commentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if($comment) {
-            $comment->delete(); // tra ve ket qua true/false
+        if($comment){
+            $comment->delete();
+            return redirect()->route('comments.index');
         }
-
-        // Cach 2: Student::destroy($student->id); // tra ve so luong ban ghi bi xoa
-        // Redirect ve danh sach (co thuc hien truy van lay ds moi)
-        return redirect()->route('comments.index');
     }
 }

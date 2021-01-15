@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class CommentFactory extends Factory
 {
@@ -23,9 +22,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->text(20),
-            'post_id' => $this->faker->numberBetween(1, 10),
-            'student_id' => $this->faker->numberBetween(1, 10),
+            'content' => $this->faker->text(50),
+            'product_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'status' => $this->faker->numberBetween(0,1),
             //
         ];
     }

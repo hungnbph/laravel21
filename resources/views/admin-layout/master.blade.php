@@ -17,7 +17,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -174,30 +175,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Student
+                comment
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('students') }}" class="nav-link active">
+                <a href="{{ url('comments') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                  danh sach
+                  danh sach comment
                   </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>thêm Student</p>
                 </a>
               </li>
               
             </ul>
           </li>
 
-          <!-- category  -->
           
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
@@ -209,7 +203,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('categories')}}" class="nav-link active">
+                <a href="{{ url('categories') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                   danh sach Categories
@@ -217,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('categories.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>thêm Categories</p>
                 </a>
@@ -225,40 +219,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
             </ul>
           </li>
-          
- 
-       <!-- post -->
+
 
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Post
+                product
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('posts') }}" class="nav-link active">
+                <a href="{{ url('products') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                  danh sach Post
+                  danh sach products
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('products.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>thêm Post</p>
+                  <p>thêm product</p>
                 </a>
               </li>
               
             </ul>
           </li>
-
-
-          <!-- user -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -269,15 +258,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('users')}}" class="nav-link active">
+                <a href="{{ url('users') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                  danh sach
+                  danh sach user
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('users.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>thêm user</p>
                 </a>
@@ -285,37 +274,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
             </ul>
           </li>
-
-            <!-- comment -->
-
-           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Comment
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('comments') }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                  danh sach Coment
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>thêm comment</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
